@@ -2,7 +2,7 @@ package io.procrastination.design.view.text
 
 import android.content.Context
 import android.util.AttributeSet
-import io.procrastination.skeleton.R
+import io.procrastination.design.R
 
 class Paragraph : BonesText {
 

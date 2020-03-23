@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.core.content.ContextCompat
 import com.google.android.material.switchmaterial.SwitchMaterial
-import io.procrastination.skeleton.R
+import io.procrastination.design.R
 
 class Toggle : SwitchMaterial {
 

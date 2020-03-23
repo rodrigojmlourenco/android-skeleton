@@ -3,7 +3,7 @@ package io.procrastination.design.view.buttons
 import android.content.Context
 import android.util.AttributeSet
 import com.google.android.material.button.MaterialButton
-import io.procrastination.skeleton.R
+import io.procrastination.design.R
 import io.procrastination.design.view.ThrottleClickListener
 
 class PrimaryButton : MaterialButton {

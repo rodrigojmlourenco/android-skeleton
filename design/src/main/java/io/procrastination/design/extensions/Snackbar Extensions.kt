@@ -11,9 +11,10 @@ import androidx.annotation.ColorRes
 import androidx.annotation.IdRes
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
-import io.procrastination.skeleton.R
+import io.procrastination.design.R
 import timber.log.Timber
 
 object SnackbarExtensions
@@ -32,6 +33,13 @@ fun Activity.createSnackbar(
     return Snackbar
         .make(findViewById<View>(android.R.id.content), message, length)
         .apply { if (color != null) this.view.setBackgroundColor(color) }
+}
+
+fun Fragment.createSnackbar(
+    message: String,
+    length: Int = Snackbar.LENGTH_SHORT
+) : Snackbar {
+    return Snackbar.make(requireView(), message, length)
 }
 
 fun Snackbar.backgroundColor(@ColorRes color: Int): Snackbar {
@@ -84,18 +92,5 @@ fun Activity.showSnackbar(message: String, length: Int = Snackbar.LENGTH_SHORT, 
             .show()
     } catch (e: IllegalArgumentException) {
         Timber.e("Unable to render snackbar as view with id android.R.id.content is not suitable.")
-    }
-}
-
-fun BottomSheetDialogFragment.createSnackbar(message: String, length: Int = Snackbar.LENGTH_SHORT): Snackbar? {
-
-    val baseView = dialog?.window?.decorView
-
-    return try {
-        baseView?.let {
-            Snackbar.make(it, message, length)
-        }
-    } catch (e: Exception) {
-        null
     }
 }

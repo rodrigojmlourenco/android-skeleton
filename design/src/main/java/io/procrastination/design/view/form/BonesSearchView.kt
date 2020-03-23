@@ -9,7 +9,7 @@ import android.widget.FrameLayout
 import android.widget.SearchView
 import androidx.core.content.ContextCompat
 import io.procrastination.design.extensions.setThrottledClickListener
-import io.procrastination.skeleton.R
+import io.procrastination.design.R
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.subjects.PublishSubject

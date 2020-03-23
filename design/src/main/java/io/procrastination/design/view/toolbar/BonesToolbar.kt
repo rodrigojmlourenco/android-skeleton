@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.BindingAdapter
 import io.procrastination.design.extensions.setThrottledClickListener
-import io.procrastination.skeleton.R
+import io.procrastination.design.R
 
 class BonesToolbar : Toolbar {
 

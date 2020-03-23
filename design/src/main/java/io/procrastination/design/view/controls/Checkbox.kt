@@ -3,7 +3,7 @@ package io.procrastination.design.view.controls
 import android.content.Context
 import android.util.AttributeSet
 import com.google.android.material.checkbox.MaterialCheckBox
-import io.procrastination.skeleton.R
+import io.procrastination.design.R
 
 class Checkbox : MaterialCheckBox {
 

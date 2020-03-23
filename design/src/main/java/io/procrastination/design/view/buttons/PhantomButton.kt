@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import com.google.android.material.button.MaterialButton
 import io.procrastination.design.view.ThrottleClickListener
-import io.procrastination.skeleton.R
+import io.procrastination.design.R
 
 class PhantomButton : MaterialButton {
 
