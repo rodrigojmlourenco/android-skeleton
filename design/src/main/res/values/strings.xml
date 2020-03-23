@@ -1,6 +1,7 @@
 <resources>
-    <string name="vouchercodes">VoucherCodes</string>
-
     <string name="search">Search</string>
     <string name="go_back">Go back</string>
+    <string name="form_inputs">Forms</string>
+    <string name="controls">Controls</string>
+    <string name="typography">Typography</string>
 </resources>

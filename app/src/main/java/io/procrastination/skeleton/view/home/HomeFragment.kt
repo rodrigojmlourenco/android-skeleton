@@ -9,11 +9,12 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import dagger.android.ContributesAndroidInjector
 import dagger.android.support.AndroidSupportInjection
+import io.procrastination.design.sample.MaterialSampleActivity
 import io.procrastination.skeleton.R
 
 class HomeFragment : Fragment() {
 
-    private lateinit var btnShowCaseMaterialDesign : Button
+    private lateinit var btnShowCaseMaterialDesign: Button
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -29,7 +30,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btnShowCaseMaterialDesign.setOnClickListener{}
+        btnShowCaseMaterialDesign.setOnClickListener {
+            startActivity(MaterialSampleActivity.getLaunchIntent(requireContext()))
+        }
     }
 
     @dagger.Module

@@ -1,6 +1,7 @@
 package io.procrastination.design.view.form
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.text.Editable
 import android.text.InputType
 import android.util.AttributeSet
@@ -61,6 +62,14 @@ class TextForm : FrameLayout {
                 valuePublisher.onNext(s.toString())
             }
         })
+
+        editText.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                valuePublisher.onNext(editText.text.toString())
+            }
+
+            true
+        }
     }
 
     fun setValue(value: CharSequence?) {
@@ -81,7 +90,8 @@ class TextForm : FrameLayout {
     }
 
     fun setSuccess() {
-        editTextParent.endIconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_check)
+        editTextParent.isEndIconVisible = true
+        editTextParent.endIconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_check_green)
     }
 
     fun observe(listener: Consumer<String>): Disposable {
@@ -91,14 +101,8 @@ class TextForm : FrameLayout {
             .subscribe(listener)
     }
 
-    fun onDone(action: () -> Unit) {
-        editText.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                action()
-            }
-
-            true
-        }
+    fun observe(listener: (String)-> Unit): Disposable {
+        return observe(Consumer(listener))
     }
 
     override fun setOnClickListener(l: OnClickListener?) {
@@ -154,6 +158,10 @@ class TextForm : FrameLayout {
 
                 R.styleable.TextForm_error -> {
                     setError(array.getString(id))
+                }
+
+                R.styleable.TextForm_success -> {
+                    if(array.getBoolean(id, false)) setSuccess()
                 }
             }
         }

@@ -10,8 +10,8 @@ import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import io.procrastination.design.extensions.handleAttributeSet
 import io.procrastination.design.R
+import io.procrastination.design.extensions.handleAttributeSet
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
@@ -61,6 +61,14 @@ class BoxedTextForm : FrameLayout {
                 valuePublisher.onNext(s.toString())
             }
         })
+
+        editText.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                valuePublisher.onNext(editText.text.toString())
+            }
+
+            true
+        }
     }
 
     fun setValue(value: CharSequence?) {
@@ -91,14 +99,8 @@ class BoxedTextForm : FrameLayout {
             .subscribe(listener)
     }
 
-    fun onDone(action: () -> Unit) {
-        editText.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                action()
-            }
-
-            true
-        }
+    fun observe(listener: (String) -> Unit): Disposable {
+        return observe(Consumer(listener))
     }
 
     override fun setOnClickListener(l: OnClickListener?) {
@@ -154,6 +156,10 @@ class BoxedTextForm : FrameLayout {
 
                 R.styleable.BoxedTextForm_error -> {
                     setError(array.getString(id))
+                }
+
+                R.styleable.BoxedTextForm_success -> {
+                    if(array.getBoolean(id, false)) setSuccess()
                 }
             }
         }
