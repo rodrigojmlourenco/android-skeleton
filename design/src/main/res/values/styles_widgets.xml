@@ -107,16 +107,16 @@
         <item name="passwordToggleTint">@color/selector_text_input_end_icon</item>
         <item name="boxStrokeColor">@color/selector_text_input_stroke</item>
         <item name="hintTextAppearance">@style/TextAppearance.AppTheme.BoxedTextInputLayoutHint</item>
-        <item name="hintTextColor">@color/grey_medium_light</item>
+        <item name="hintTextColor">@color/textColorLight</item>
     </style>
 
     <style name="Widget.AppTheme.BoxedTextInputLayout.EditText" parent="Widget.AppCompat.EditText">
-        <item name="android:textColor">@color/blueberry</item>
-        <item name="android:textColorHint">@color/grey_medium_light</item>
+        <item name="android:textColor">@color/textColorDark</item>
+        <item name="android:textColorHint">@color/textColorLight</item>
     </style>
 
     <style name="TextAppearance.AppTheme.BoxedTextInputLayoutHint" parent="TextAppearance.MaterialComponents.Caption">
-        <item name="android:textColor">@color/grey_medium_light</item>
+        <item name="android:textColor">@color/textColorLight</item>
     </style>
 
     <!--

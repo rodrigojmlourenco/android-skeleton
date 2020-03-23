@@ -45,7 +45,7 @@
 
     <!-- Grey Scale -->
     <color name="white" tools="ignore">#FFF</color>
-    <color name="white_alpha90" tools="ignore">#F2FFFFFF</color>
+    <color name="white_alpha_90" tools="ignore">#F2FFFFFF</color>
     <color name="grey50">#fafafa</color>
     <color name="grey100">#f5f5f5</color>
     <color name="grey200">#eeeeee</color>
