@@ -4,6 +4,8 @@ import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
 import io.procrastination.skeleton.BuildConfig
 import io.procrastination.skeleton.di.qualifiers.Endpoint
 import okhttp3.OkHttpClient
@@ -14,20 +16,16 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import timber.log.Timber
 
 @Module
+@InstallIn(ActivityComponent::class)
 object NetworkModule {
 
     @Provides
     @JvmStatic
     fun provideOkHttpLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
-            override fun log(message: String) {
-                Timber.tag("OkHttp").d(message)
-            }
-        })
+        return HttpLoggingInterceptor { message -> Timber.tag("OkHttp").d(message) }
     }
 
     @Provides
-    @JvmStatic
     fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
 
         if (BuildConfig.DEBUG)
@@ -42,13 +40,11 @@ object NetworkModule {
     }
 
     @Provides
-    @JvmStatic
     fun provideMoshi(): Moshi {
         return Moshi.Builder().build()
     }
 
     @Provides
-    @JvmStatic
     @Reusable
     fun provideRetrofitBuilder(
         @Endpoint mapiEndpoint: String,

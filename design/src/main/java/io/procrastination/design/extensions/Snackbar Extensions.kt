@@ -12,7 +12,6 @@ import androidx.annotation.IdRes
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
 import io.procrastination.design.R
 import timber.log.Timber
@@ -38,7 +37,7 @@ fun Activity.createSnackbar(
 fun Fragment.createSnackbar(
     message: String,
     length: Int = Snackbar.LENGTH_SHORT
-) : Snackbar {
+): Snackbar {
     return Snackbar.make(requireView(), message, length)
 }
 
@@ -64,7 +63,11 @@ fun Snackbar.elevation(elevation: Int): Snackbar {
     return apply { view.elevation = elevation.toFloat() }
 }
 
-fun Snackbar.action(description: String, @ColorRes color: Int? = null, action: () -> Unit): Snackbar {
+fun Snackbar.action(
+    description: String,
+    @ColorRes color: Int? = null,
+    action: () -> Unit
+): Snackbar {
     return apply {
         setAction(description) { action() }
         color?.let { setActionTextColor(view.context.getColorCompat(it)) }
@@ -85,7 +88,11 @@ fun Snackbar.above(@IdRes id: Int): Snackbar {
     }
 }
 
-fun Activity.showSnackbar(message: String, length: Int = Snackbar.LENGTH_SHORT, @ColorInt color: Int? = null) {
+fun Activity.showSnackbar(
+    message: String,
+    length: Int = Snackbar.LENGTH_SHORT,
+    @ColorInt color: Int? = null
+) {
     try {
         Snackbar.make(findViewById<View>(android.R.id.content), message, length)
             .apply { if (color != null) this.view.setBackgroundColor(color) }

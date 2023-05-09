@@ -18,13 +18,17 @@ class TextH1 : BonesText {
     override val textBoldStyleId: Int
         get() = R.styleable.h1_bolden
 
-    constructor(context: Context?) : this(context, null)
+    constructor(context: Context) : this(context, null)
 
-    constructor(context: Context?, attrs: AttributeSet?) : this(
+    constructor(context: Context, attrs: AttributeSet?) : this(
         context,
         attrs,
         R.attr.h1Style
     )
 
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    )
 }

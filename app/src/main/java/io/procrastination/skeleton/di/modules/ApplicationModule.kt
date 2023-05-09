@@ -4,19 +4,21 @@ import android.content.Context
 import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import io.procrastination.skeleton.R
-import io.procrastination.skeleton.view.BonesApplication
 
 @Module
+@InstallIn(SingletonComponent::class)
 object ApplicationModule {
 
-    @Provides
-    @JvmStatic
-    fun provideContext(app: BonesApplication): Context = app.applicationContext
 
     @Provides
-    @JvmStatic
-    fun provideSharedPreferences(context: Context): SharedPreferences {
-        return context.getSharedPreferences(context.getString(R.string.app_name), Context.MODE_PRIVATE)
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences(
+            context.getString(R.string.app_name),
+            Context.MODE_PRIVATE
+        )
     }
 }

@@ -1,7 +1,6 @@
 package io.procrastination.design.view.form
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.text.Editable
 import android.text.InputType
 import android.util.AttributeSet
@@ -11,8 +10,8 @@ import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import io.procrastination.design.extensions.handleAttributeSet
 import io.procrastination.design.R
+import io.procrastination.design.extensions.handleAttributeSet
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
@@ -91,7 +90,8 @@ class TextForm : FrameLayout {
 
     fun setSuccess() {
         editTextParent.isEndIconVisible = true
-        editTextParent.endIconDrawable = ContextCompat.getDrawable(context, R.drawable.ic_check_green)
+        editTextParent.endIconDrawable =
+            ContextCompat.getDrawable(context, R.drawable.ic_check_green)
     }
 
     fun observe(listener: Consumer<String>): Disposable {
@@ -101,7 +101,7 @@ class TextForm : FrameLayout {
             .subscribe(listener)
     }
 
-    fun observe(listener: (String)-> Unit): Disposable {
+    fun observe(listener: (String) -> Unit): Disposable {
         return observe(Consumer(listener))
     }
 
@@ -161,7 +161,7 @@ class TextForm : FrameLayout {
                 }
 
                 R.styleable.TextForm_success -> {
-                    if(array.getBoolean(id, false)) setSuccess()
+                    if (array.getBoolean(id, false)) setSuccess()
                 }
             }
         }

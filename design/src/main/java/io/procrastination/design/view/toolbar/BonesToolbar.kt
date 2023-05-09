@@ -8,14 +8,23 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.databinding.BindingAdapter
-import io.procrastination.design.extensions.setThrottledClickListener
 import io.procrastination.design.R
+import io.procrastination.design.extensions.setThrottledClickListener
 
 class BonesToolbar : Toolbar {
 
-    constructor(context: Context?) : super(context)
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) { handleAttributes(attrs) }
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) { handleAttributes(attrs) }
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+        handleAttributes(attrs)
+    }
+
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
+        handleAttributes(attrs)
+    }
 
     private val txtTitle: TextView
     private val btnAction: ImageView
@@ -33,10 +42,10 @@ class BonesToolbar : Toolbar {
         if (attrs == null) return
 
         context.theme.obtainStyledAttributes(
-                attrs,
-                R.styleable.BonesToolbar,
-                0,
-                0
+            attrs,
+            R.styleable.BonesToolbar,
+            0,
+            0
         ).apply {
 
             try {

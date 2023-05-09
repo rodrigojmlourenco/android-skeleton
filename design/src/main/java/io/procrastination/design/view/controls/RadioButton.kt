@@ -7,12 +7,12 @@ import io.procrastination.design.R
 
 class RadioButton : MaterialRadioButton {
 
-    constructor(context: Context) : super(context, null, R.attr.radioButtonStyle)
+    constructor(context: Context) : super(context, null, 0)
 
     constructor(context: Context, attrs: AttributeSet?) : super(
         context,
         attrs,
-        R.attr.radioButtonStyle
+        0
     )
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
